@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/smart_agri_background_image"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginEnd="20dp"
+        android:text="Smart Agriculture Monitoring System"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="40dp"
+        android:layout_marginTop="100dp"
+        android:alpha="0.95"
+        android:background="#011427"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Temperature"
+                android:textAlignment="viewStart"
+                android:textColor="#ffff"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/temp_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="--"
+                android:textAlignment="center"
+                android:textColor="#ffff"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Humidity"
+                android:textAlignment="viewStart"
+                android:textColor="#ffff"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/humid_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="--"
+                android:textAlignment="center"
+                android:textColor="#ffff"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Soil Moisture"
+                android:textAlignment="viewStart"
+                android:textColor="#ffff"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/soil_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="--"
+                android:textAlignment="center"
+                android:textColor="#ffff"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="pH"
+                android:textAlignment="viewStart"
+                android:textColor="#ffff"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/ph_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="--"
+                android:textAlignment="center"
+                android:textColor="#ffff"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
