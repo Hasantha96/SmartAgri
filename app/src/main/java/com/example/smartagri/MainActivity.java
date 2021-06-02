@@ -1,8 +1,10 @@
 package com.example.smartagri;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -27,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     TextView soilText;
     TextView phText;
 
+    //assign mois and ph
+    int ph_val=9;
+    float mois= (float) 55.0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         SetTemperature();
         SetHumidity();
-        //SetSoilMoisture();
-      //SetSoilPH();
+        SetSoilMoisture();
+        SetSoilPH();
     }
 
     public void SetTemperature(){
@@ -85,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-   /* public void SetSoilMoisture(){
+   public void SetSoilMoisture(){
 
         List<String> soilMoistures = new ArrayList<String>();
         reference = FirebaseDatabase.getInstance().getReference().child("SoilMoisture");
@@ -97,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     soilMoistures.add(snapshot.child("soil").getValue().toString());
                 }
-                soilText.setText(soilMoistures.get(soilMoistures.size()-1));
+                //soilText.setText(soilMoistures.get(soilMoistures.size()-1));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -118,14 +124,67 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     soilPH.add(snapshot.child("ph").getValue().toString());
                 }
-                phText.setText(soilPH.get(soilPH.size()-1));
+                //phText.setText(soilPH.get(soilPH.size()-1));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-    }*/
+    }
+
+    public void popUp(View v){
+
+        int output=checkPh(ph_val);
+        String message = msgGenerator(output,mois);
+        alert(message);
+    }
+
+    //get acid or base according to ph
+    public int checkPh(int x){
+        if( x<6 ){
+            return 1;
+        }else if(x<8){
+            return 2;
+        }else {
+            return 3;
+        }
+    }
+
+    //alert msg generating
+    public String msgGenerator(int ph_out,float mois){
+        String temp_msg;
+
+        if(ph_out == 1 && mois > 50){
+            temp_msg= "Soil is Acidic and less of water. Add fertilizer A";
+        }else if(ph_out ==1){
+            temp_msg= "Soil is Acidic. Add fertilizer A";
+        }else if(ph_out ==2 && mois >50){
+            temp_msg ="Soil is Nutral and less of water ";
+        }else if(ph_out ==2){
+            temp_msg="Soil is Nutral ";
+        }else if(ph_out ==3 && mois >50){
+            temp_msg ="This soil is Base and less of water. Add fertilizer B";
+        }else{
+            temp_msg="This soil is Base. Add fertilizer B";
+        }
+        return temp_msg;
+    }
+
+    //pop alert message
+    private void alert( String message){
+        AlertDialog dia  =  new AlertDialog.Builder(MainActivity.this)
+                .setTitle("Recomendations")
+                .setMessage(message)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        dia.show();
+    }
 
 
 

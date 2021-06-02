@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="77dp"
+        android:layout_marginTop="86dp"
         android:layout_marginEnd="20dp"
         android:text="Smart Agriculture Monitoring System"
         android:textAlignment="center"
@@ -135,5 +135,20 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="199dp"
+        android:layout_height="77dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="592dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="62dp"
+        android:onClick="popUp"
+        android:text="Recomendations" />
 
 </RelativeLayout>
