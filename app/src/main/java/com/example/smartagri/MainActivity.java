@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
     TextView phText;
 
     //assign mois and ph
-    int ph_val=9;
-    float mois= (float) 55.0;
+    int ph_val;
+    int mois;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
                     humudities.add(snapshot.child("humid").getValue().toString());
                 }
                 humidText.setText(humudities.get(humudities.size()-1)+"%");
+
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -103,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     soilMoistures.add(snapshot.child("soil").getValue().toString());
                 }
-                //soilText.setText(soilMoistures.get(soilMoistures.size()-1));
+                soilText.setText(soilMoistures.get(soilMoistures.size()-1));
+                mois=Integer.parseInt(soilText.getText().toString());
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -124,7 +127,8 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     soilPH.add(snapshot.child("ph").getValue().toString());
                 }
-                //phText.setText(soilPH.get(soilPH.size()-1));
+                phText.setText(soilPH.get(soilPH.size()-1));
+                ph_val=Integer.parseInt(phText.getText().toString());
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
